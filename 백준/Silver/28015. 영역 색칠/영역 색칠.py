@@ -11,11 +11,11 @@ cnt = 0
 for i in range(len(_list)):
     while True:
         for j in range(len(_list[i])):
-            if _list[i][j] == 0 and (brushOne == True or brushTwo == True):
+            if _list[i][j] == 0:
                 brushOne = False
                 brushTwo = False
 
-            if _list[i][j] == 1 and brushOne == False and brushTwo == False:
+            elif _list[i][j] == 1 and brushOne == False and brushTwo == False:
                 brushOne = True
                 _list[i][j] -= 1
                 cnt += 1
