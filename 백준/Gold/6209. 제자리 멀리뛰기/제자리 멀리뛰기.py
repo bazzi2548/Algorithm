@@ -4,26 +4,23 @@ input = sys.stdin.readline
 d, n, m = map(int, input().split())
 _list = sorted([int(input()) for _ in range(n)] + [d])
 
-def getCount(mid):
+def getConut(mid):
+    count = 0
     temp = 0
-    tempList = [d]
     for i in _list:
-        if i - temp > mid:
-            tempList.append(i-temp)
+        if i - temp >= mid:
+            count += 1
             temp = i
-    return tempList
+    return count
 
-start = 0; end = d
+start, end = 0, d
 answer = 0
-
-while start<=end:
-    mid = (start+end)//2
-    tempList = getCount(mid)
-
-    if len(tempList)-1 > n - m:
+while start <= end:
+    mid = (start + end) // 2
+    if getConut(mid) >= n - m + 1:
+        answer = mid
         start = mid + 1
     else:
-        answer = min(mid, min(tempList))
         end = mid - 1
 
 print(answer)
